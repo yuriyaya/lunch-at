@@ -18,6 +18,10 @@
   vertical-align: middle;
 }
 
+.homewhatclick {
+  height: 100%;
+}
+
 .homehow {
   background-color: #fcca46;
   font-weight: 700;
@@ -27,8 +31,31 @@
   text-align: center;
 }
 
+.homehowclick {
+  height: 100%;
+}
+
 .homefooter {
   background-color: #fe7f2d;
   padding: 10px;
   text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+  color: black;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
 }
