@@ -1,4 +1,4 @@
-import styles from "./HomeFooter.module.css";
+import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
 
 function HomeFooter() {
