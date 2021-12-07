@@ -2,11 +2,16 @@
   padding: 20px;
 }
 
+.storeDetailInputArea {
+  padding-left: 5px;
+}
+
 input {
   padding: 5px;
+  margin: 5px;
 }
 
 button {
-  margin-left: 10px;
+  margin: 10px;
   padding: 5px;
 }
