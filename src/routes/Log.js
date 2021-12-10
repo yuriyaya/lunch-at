@@ -1,11 +1,11 @@
 import HomeHow from "../components/HomeHow";
-import LogStore from "../components/LogStore";
+import LogStoreMenu from "../components/LogStoreMenu";
 
 function Log() {
   return (
     <div>
       <HomeHow />
-      <LogStore />
+      <LogStoreMenu />
     </div>
   );
 }

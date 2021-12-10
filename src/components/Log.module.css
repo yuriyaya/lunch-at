@@ -1,9 +1,14 @@
-.storeInputArea {
+.firstLevelInputArea {
   padding: 20px;
 }
 
-.storeDetailInputArea {
+.secondLevelInputArea {
   padding-left: 5px;
+}
+
+.firstLevelInputAreaHidden {
+  display: none;
+  padding: 20px;
 }
 
 input {

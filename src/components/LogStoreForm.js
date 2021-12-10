@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import styles from "./Log.module.css";
 
-function LogStoreForm({ storeExist }) {
+function LogStoreForm({ id }) {
   const [category, setCategory] = useState("");
   const [locquick, setLocquick] = useState("");
   const [webpage, setWebpage] = useState("");
-  const [distance, setDistance] = useState(0);
+  const [distance, setDistance] = useState(5);
+
   const onChangeCategory = (event) => {
     setCategory(event.target.value);
   };
@@ -20,13 +21,13 @@ function LogStoreForm({ storeExist }) {
   };
   return (
     <div>
-      <div className={styles.storeInputArea}>
+      <div className={styles.firstLevelInputArea}>
         <div>
-          새로운 식당입니다!
+          {id ? "식당정보 수정" : "새로운 식당입니다!"}
           <br />
-          기본 정보를 입력해 주세요.
+          {id ? "" : "기본 정보를 입력해 주세요(옵션)."}
         </div>
-        <div className={styles.storeDetailInputArea}>
+        <div className={styles.secondLevelInputArea}>
           <input
             value={category}
             onChange={onChangeCategory}
@@ -34,7 +35,7 @@ function LogStoreForm({ storeExist }) {
             placeholder="음식 종류(e.g. 한식, 양식, ...)"
           />
         </div>
-        <div className={styles.storeDetailInputArea}>
+        <div className={styles.secondLevelInputArea}>
           <input
             value={locquick}
             onChange={onChangeLocquick}
@@ -42,7 +43,7 @@ function LogStoreForm({ storeExist }) {
             placeholder="대략 위치(e.g. xx 건물 x층 ...)"
           />
         </div>
-        <div className={styles.storeDetailInputArea}>
+        <div className={styles.secondLevelInputArea}>
           <input
             value={webpage}
             onChange={onChangeWebpage}
@@ -50,7 +51,7 @@ function LogStoreForm({ storeExist }) {
             placeholder="홈페이지 정보(네이버 링크, 인스타 링크 등...)"
           />
         </div>
-        <div className={styles.storeDetailInputArea}>
+        <div className={styles.secondLevelInputArea}>
           <input
             value={distance}
             onChange={onChangeDistance}
@@ -59,7 +60,7 @@ function LogStoreForm({ storeExist }) {
           />
           분
         </div>
-        <button onClick={null}>식당정보 입력</button>
+        <button onClick={null}>식당정보 {id ? "수정" : "입력"}</button>
       </div>
     </div>
   );
