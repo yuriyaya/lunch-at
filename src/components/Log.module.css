@@ -11,6 +11,14 @@
   padding: 20px;
 }
 
+.divDisplay {
+  display: block;
+}
+
+.divHidden {
+  display: none;
+}
+
 input {
   padding: 5px;
   margin: 5px;

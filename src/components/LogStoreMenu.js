@@ -16,8 +16,6 @@ function LogStoreMenu() {
   const [menuId, setMenuId] = useState(0); //search menu id
   const [menulist, setMenulist] = useState([]); // for UI, all menu-store name list
 
-  let cat_test = "category_test_1";
-
   const onChangeStore = (event) => {
     setStore(event.target.value);
   };
@@ -26,11 +24,10 @@ function LogStoreMenu() {
     setMenuId(findMenuId(event.target.value));
   };
 
-  const apiHost = process.env.REACT_APP_API_HOST;
   // ============================ store
   //get store list
   useEffect(() => {
-    fetch(`${apiHost}/stores/namelist`)
+    fetch(`${process.env.REACT_APP_API_HOST}/stores/namelist`)
       .then((response) => {
         return response.json();
       })
@@ -41,7 +38,7 @@ function LogStoreMenu() {
   const searchStore = async () => {
     // console.log(`${apiHost}/stores/search?name=${store}`);
     if (store !== "") {
-      fetch(`${apiHost}/stores/search?name=${store}`)
+      fetch(`${process.env.REACT_APP_API_HOST}/stores/search?name=${store}`)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -73,7 +70,7 @@ function LogStoreMenu() {
   // ============================ menu
   //get menu list
   useEffect(() => {
-    fetch(`${apiHost}/menus/menustorelist`)
+    fetch(`${process.env.REACT_APP_API_HOST}/menus/menustorelist`)
       .then((response) => {
         return response.json();
       })
@@ -83,7 +80,7 @@ function LogStoreMenu() {
   }, []);
   const searchMenu = async () => {
     // console.log(`${apiHost}/menu/${menuId}`);
-    fetch(`${apiHost}/menu/${menuId}`)
+    fetch(`${process.env.REACT_APP_API_HOST}/menu/${menuId}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -130,20 +127,22 @@ function LogStoreMenu() {
         }
       >
         <div>오늘 {store ? store : "식당"} 어때?</div>
-        <input
-          value={store}
-          onChange={onChangeStore}
-          type="search"
-          placeholder="식당이름 입력/선택"
-          list="storelist"
-          disabled={menuDisable ? true : false}
-        />
-        <datalist id="storelist">
-          {storelist.map((i, index) => (
-            <option key={index} value={i["name"]}></option>
-          ))}
-        </datalist>
-        <button onClick={storeSearchClick}>찾기</button>
+        <div className={newStore ? styles.divHidden : styles.divDisplay}>
+          <input
+            value={store}
+            onChange={onChangeStore}
+            type="search"
+            placeholder="식당이름 입력/선택"
+            list="storelist"
+            disabled={menuDisable ? true : false}
+          />
+          <datalist id="storelist">
+            {storelist.map((i, index) => (
+              <option key={index} value={i["name"]}></option>
+            ))}
+          </datalist>
+          <button onClick={storeSearchClick}>찾기</button>
+        </div>
         {newStoreRate ? (
           <LogRateForm storeEnable={!storeDisable} id={storeId} />
         ) : null}
