@@ -183,7 +183,7 @@ function LogStoreMenu() {
           찾기
         </button>
         {newMenuRate ? (
-          <LogRateForm storeEnable={!storeDisable} id={menuId} name={store} />
+          <LogRateForm storeEnable={!storeDisable} id={menuId} />
         ) : null}
       </div>
     </div>

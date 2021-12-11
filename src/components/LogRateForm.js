@@ -108,9 +108,7 @@ function LogRateForm({ storeEnable, id }) {
   return (
     <div>
       <div className={styles.firstLevelInputArea}>
-        <div>
-          {id} {storeEnable ? "식당" : "메뉴"} 평점 입력
-        </div>
+        <div>{storeEnable ? "식당" : "메뉴"} 평점 입력</div>
         <div className={styles.secondLevelInputArea}>
           {!storeEnable && id === 0 ? (
             <input

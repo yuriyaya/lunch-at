@@ -77,7 +77,7 @@ function LogStoreForm({ id, name, storeData }) {
     <div>
       <div className={styles.firstLevelInputArea}>
         <div>
-          {id} {id ? "식당정보 수정" : "새로운 식당입니다!"}
+          {id ? "식당정보 수정(옵션)" : "새로운 식당입니다!"}
           <br />
           {id ? "" : "기본 정보를 입력해 주세요(옵션)."}
         </div>
