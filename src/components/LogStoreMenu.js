@@ -15,6 +15,7 @@ function LogStoreMenu() {
   const [newMenuRate, setNewMenuRate] = useState(0); //menu rating form UI flag
   const [menuId, setMenuId] = useState(0); //search menu id
   const [menulist, setMenulist] = useState([]); // for UI, all menu-store name list
+  const [storeData, setStoreData] = useState([]);
 
   const onChangeStore = (event) => {
     setStore(event.target.value);
@@ -54,6 +55,7 @@ function LogStoreMenu() {
               setNewStore(1); //for edit store information
               setNewStoreRate(1);
               setStoreId(data[0]["id"]);
+              setStoreData([...data]);
             }
           }
         });
@@ -146,7 +148,9 @@ function LogStoreMenu() {
         {newStoreRate ? (
           <LogRateForm storeEnable={!storeDisable} id={storeId} />
         ) : null}
-        {newStore ? <LogStoreForm id={storeId} /> : null}
+        {newStore ? (
+          <LogStoreForm id={storeId} name={store} storeData={storeData} />
+        ) : null}
       </div>
       <div
         className={
