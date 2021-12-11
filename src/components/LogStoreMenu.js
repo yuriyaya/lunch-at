@@ -179,7 +179,16 @@ function LogStoreMenu() {
         </datalist>
         <button onClick={menuSearchClick}>찾기</button>
         {newMenuRate ? (
-          <LogRateForm storeEnable={!storeDisable} id={menuId} />
+          <div>
+            <input
+              value={store}
+              onChange={onChangeStore}
+              type="text"
+              placeholder="식당이름 입력(필수)"
+              required={true}
+            />
+            <LogRateForm storeEnable={!storeDisable} id={menuId} name={store} />
+          </div>
         ) : null}
       </div>
     </div>

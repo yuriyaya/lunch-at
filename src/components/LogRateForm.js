@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Log.module.css";
 
-function LogRateForm({ storeEnable, id }) {
+function LogRateForm({ storeEnable, id, name }) {
   const [rate, setRate] = useState(3);
   const [comment, setComment] = useState("");
   const [upComplete, setUpComplete] = useState(false);
@@ -45,6 +45,25 @@ function LogRateForm({ storeEnable, id }) {
     setUpComplete(true);
   };
 
+  const addStoreData = async () => {
+    const json = await (
+      await fetch(`${process.env.REACT_APP_API_HOST}/stores`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          category: "",
+          loc_quick: "",
+          link: "",
+          distance: 0,
+        }),
+      })
+    ).json();
+    // console.log(json);
+  };
+
   const updateMenuRate = async () => {
     const json = await (
       await fetch(`${process.env.REACT_APP_API_HOST}/menu/${id}/menu_ratings`, {
@@ -65,13 +84,19 @@ function LogRateForm({ storeEnable, id }) {
 
   const updateRate = () => {
     if (storeEnable) {
+      //add store rate
       updateStoreRate();
+    } else {
       if (id < 1) {
         //add new store, then update rate
+        if (name !== "") {
+          addStoreData();
+          updateStoreRate();
+        }
+      } else {
+        //update menu rate
+        updateMenuRate();
       }
-    } else {
-      //update menu rate
-      updateMenuRate();
     }
   };
   return (
