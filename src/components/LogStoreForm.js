@@ -69,7 +69,7 @@ function LogStoreForm({ id, name, storeData }) {
         }),
       })
     ).json();
-    console.log(json);
+    // console.log(json);
     setAddComplete(true);
   };
 

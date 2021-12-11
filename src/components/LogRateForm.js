@@ -5,6 +5,7 @@ function LogRateForm({ storeEnable, id }) {
   const [rate, setRate] = useState(3);
   const [comment, setComment] = useState("");
   const [upComplete, setUpComplete] = useState(false);
+
   const onChangeRate = (event) => {
     setRate(event.target.value);
   };
@@ -44,14 +45,33 @@ function LogRateForm({ storeEnable, id }) {
     setUpComplete(true);
   };
 
+  const updateMenuRate = async () => {
+    const json = await (
+      await fetch(`${process.env.REACT_APP_API_HOST}/menu/${id}/menu_ratings`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          rating: rate,
+          comment: comment,
+          datetime: getDateTimeString(),
+        }),
+      })
+    ).json();
+    // console.log(json);
+    setUpComplete(true);
+  };
+
   const updateRate = () => {
     if (storeEnable) {
       updateStoreRate();
-      if (id === 0) {
+      if (id < 1) {
         //add new store, then update rate
       }
     } else {
       //update menu rate
+      updateMenuRate();
     }
   };
   return (
