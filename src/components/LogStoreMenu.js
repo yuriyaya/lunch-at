@@ -183,16 +183,7 @@ function LogStoreMenu() {
           찾기
         </button>
         {newMenuRate ? (
-          <div>
-            <input
-              value={store}
-              onChange={onChangeStore}
-              type="text"
-              placeholder="식당이름 입력(필수)"
-              required={true}
-            />
-            <LogRateForm storeEnable={!storeDisable} id={menuId} name={store} />
-          </div>
+          <LogRateForm storeEnable={!storeDisable} id={menuId} name={store} />
         ) : null}
       </div>
     </div>

@@ -1,14 +1,17 @@
 import { useState } from "react";
 import styles from "./Log.module.css";
 
-function LogRateForm({ storeEnable, id, name }) {
+function LogRateForm({ storeEnable, id }) {
   const [rate, setRate] = useState(3);
   const [comment, setComment] = useState("");
   const [upComplete, setUpComplete] = useState(false);
+  const [store, setStore] = useState(""); //store name
+  const [userWarn, setUserWarn] = useState(""); //store name
 
-  const onChangeRate = (event) => {
-    setRate(event.target.value);
+  const onChangeStore = (event) => {
+    setStore(event.target.value);
   };
+
   const onChangeComment = (event) => {
     setComment(event.target.value);
   };
@@ -53,7 +56,7 @@ function LogRateForm({ storeEnable, id, name }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: name,
+          name: store,
           category: "",
           loc_quick: "",
           link: "",
@@ -89,9 +92,11 @@ function LogRateForm({ storeEnable, id, name }) {
     } else {
       if (id < 1) {
         //add new store, then update rate
-        if (name !== "") {
+        if (store !== "") {
           addStoreData();
           updateStoreRate();
+        } else {
+          setUserWarn("! 식당 이름을 입력해 주세요");
         }
       } else {
         //update menu rate
@@ -105,6 +110,17 @@ function LogRateForm({ storeEnable, id, name }) {
       <div className={styles.firstLevelInputArea}>
         <div>
           {id} {storeEnable ? "식당" : "메뉴"} 평점 입력
+        </div>
+        <div className={styles.secondLevelInputArea}>
+          {!storeEnable && id === 0 ? (
+            <input
+              value={store}
+              onChange={onChangeStore}
+              type="text"
+              placeholder="식당이름 입력(필수)"
+              required={true}
+            />
+          ) : null}
         </div>
         <div className={styles.secondLevelInputArea}>
           <div className="starRating">
@@ -141,6 +157,7 @@ function LogRateForm({ storeEnable, id, name }) {
             평점 입력
           </button>
         )}
+        {userWarn !== 0 ? userWarn : ""}
       </div>
     </div>
   );

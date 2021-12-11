@@ -29,11 +29,6 @@ input {
   margin: 5px;
 }
 
-.starRating {
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
 .on {
   background-color: transparent;
   border: none;
