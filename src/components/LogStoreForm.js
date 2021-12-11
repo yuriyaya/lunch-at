@@ -84,7 +84,7 @@ function LogStoreForm({ id, name, storeData }) {
         <table style={{ border: 0 }}>
           <tbody>
             <tr>
-              <td>음식 종류:</td>
+              <td>음식 종류</td>
               <td>
                 <div className={styles.secondLevelInputArea}>
                   <input
@@ -110,7 +110,7 @@ function LogStoreForm({ id, name, storeData }) {
               </td>
             </tr>
             <tr>
-              <td>홈페이지:</td>
+              <td>홈페이지</td>
               <td>
                 <div className={styles.secondLevelInputArea}>
                   <input
@@ -123,7 +123,7 @@ function LogStoreForm({ id, name, storeData }) {
               </td>
             </tr>
             <tr>
-              <td>걸리는 시간(분):</td>
+              <td>걸리는 시간(분)</td>
               <td>
                 <div className={styles.secondLevelInputArea}>
                   <input
@@ -141,8 +141,14 @@ function LogStoreForm({ id, name, storeData }) {
               <td>
                 {id ? (
                   <div>
-                    <button onClick={loadStoreData}>불러오기</button>
                     <button
+                      className={styles.buttonGen}
+                      onClick={loadStoreData}
+                    >
+                      불러오기
+                    </button>
+                    <button
+                      className={styles.buttonGen}
                       onClick={updateStoreData}
                       disabled={!editBtnClick ? true : false}
                     >
@@ -150,7 +156,9 @@ function LogStoreForm({ id, name, storeData }) {
                     </button>
                   </div>
                 ) : (
-                  <button onClick={addStoreData}>식당정보 입력</button>
+                  <button className={styles.buttonGen} onClick={addStoreData}>
+                    식당정보 입력
+                  </button>
                 )}
                 {editComplete ? <div>식당 정보 수정 완료</div> : ""}
                 {addComplete ? <div>식당 정보 입력 완료</div> : ""}

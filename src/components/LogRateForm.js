@@ -99,6 +99,7 @@ function LogRateForm({ storeEnable, id, name }) {
       }
     }
   };
+
   return (
     <div>
       <div className={styles.firstLevelInputArea}>
@@ -106,13 +107,23 @@ function LogRateForm({ storeEnable, id, name }) {
           {id} {storeEnable ? "식당" : "메뉴"} 평점 입력
         </div>
         <div className={styles.secondLevelInputArea}>
-          <input
-            value={rate}
-            onChange={onChangeRate}
-            type="text"
-            placeholder="평점 0~5점"
-            disabled={upComplete ? true : false}
-          />
+          <div className="starRating">
+            {[...Array(5)].map((star, index) => {
+              index += 1;
+              return (
+                <button
+                  type="button"
+                  key={index}
+                  className={index <= rate ? styles.on : styles.off}
+                  onClick={() => {
+                    setRate(index);
+                  }}
+                >
+                  <span className="star">&#9733;</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
         <div className={styles.secondLevelInputArea}>
           <input
@@ -126,7 +137,9 @@ function LogRateForm({ storeEnable, id, name }) {
         {upComplete ? (
           <div>평점 입력 완료! 고맙습니다. :)</div>
         ) : (
-          <button onClick={updateRate}>평점 입력</button>
+          <button className={styles.buttonGen} onClick={updateRate}>
+            평점 입력
+          </button>
         )}
       </div>
     </div>

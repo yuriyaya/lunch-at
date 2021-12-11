@@ -143,7 +143,9 @@ function LogStoreMenu() {
               <option key={index} value={i["name"]}></option>
             ))}
           </datalist>
-          <button onClick={storeSearchClick}>찾기</button>
+          <button className={styles.buttonGen} onClick={storeSearchClick}>
+            찾기
+          </button>
         </div>
         {newStoreRate ? (
           <LogRateForm storeEnable={!storeDisable} id={storeId} />
@@ -177,7 +179,9 @@ function LogStoreMenu() {
             ></option>
           ))}
         </datalist>
-        <button onClick={menuSearchClick}>찾기</button>
+        <button className={styles.buttonGen} onClick={menuSearchClick}>
+          찾기
+        </button>
         {newMenuRate ? (
           <div>
             <input
