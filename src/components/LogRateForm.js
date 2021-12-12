@@ -52,10 +52,10 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
   const getStoreId = (storeName) => {
     let sid = 0;
     if (storeName !== "") {
-      console.log("storeName", storeName);
-      console.log(storeList);
+      // console.log("storeName", storeName);
+      // console.log(storeList);
       for (const i in storeList) {
-        console.log("getStoreId", storeList[i]["name"]);
+        // console.log("getStoreId", storeList[i]["name"]);
         if (storeList[i]["name"] === storeName) {
           sid = storeList[i]["id"];
         }
@@ -78,7 +78,7 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
       link: "",
       distance: 0,
     });
-    console.log("addStoreData body", addStoreBody);
+    // console.log("addStoreData body", addStoreBody);
     const json = await (
       await fetch(`${process.env.REACT_APP_API_HOST}/stores`, {
         method: "POST",
@@ -88,7 +88,7 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
         body: addStoreBody,
       })
     ).json();
-    console.log(json);
+    // console.log(json);
     if (naUpStoreRate) updateStoreRate(json.id);
     setAddStoreId(json.id);
     if (!naUpStoreRate) addMenuData(json.id);
@@ -106,12 +106,12 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
         }),
       })
     ).json();
-    console.log(json);
+    // console.log(json);
     updateMenuRate(json.id);
   };
 
   const updateMenuRate = async (idToUp) => {
-    console.log("idToUp", idToUp);
+    // console.log("idToUp", idToUp);
     const json = await (
       await fetch(
         `${process.env.REACT_APP_API_HOST}/menu/${idToUp}/menu_ratings`,
@@ -138,9 +138,9 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
         addStoreData(true); //add store & store rating(true)
       } else {
         //store already exist, add store rate
-        console.log("store rate name:", name);
+        // console.log("store rate name:", name);
         let sid = getStoreId(name); //
-        console.log("store rate sid: ", sid);
+        // console.log("store rate sid: ", sid);
         updateStoreRate(sid);
       }
     } else {
@@ -152,7 +152,7 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
         // (4) -> update menu rating
         if (store !== "") {
           let sid = getStoreId(store); //(1)
-          console.log("menu rate sid: ", sid);
+          // console.log("menu rate sid: ", sid);
           if (sid === 0) addStoreData(false); //(2), add store (false: do not update store rating)
           // addMenuData(); //(3)
           //updateMenuRate(); //(4) done after addMenuData
