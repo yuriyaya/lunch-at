@@ -1,0 +1,26 @@
+.firstLevelDiv {
+  padding: 20px;
+}
+
+.secondLevelDiv {
+  padding-left: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+  color: black;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
