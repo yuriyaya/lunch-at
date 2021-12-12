@@ -92,6 +92,7 @@ function LogStoreForm({ id, name, storeData }) {
                     onChange={onChangeCategory}
                     type="text"
                     placeholder="e.g. 한식, 양식, ..."
+                    disabled={!editBtnClick ? true : false}
                   />
                 </div>
               </td>
@@ -105,6 +106,7 @@ function LogStoreForm({ id, name, storeData }) {
                     onChange={onChangeLocquick}
                     type="text"
                     placeholder="e.g. xx 건물 x층 ..."
+                    disabled={!editBtnClick ? true : false}
                   />
                 </div>
               </td>
@@ -118,6 +120,7 @@ function LogStoreForm({ id, name, storeData }) {
                     onChange={onChangeWebpage}
                     type="text"
                     placeholder="네이버, 인스타 링크 등..."
+                    disabled={!editBtnClick ? true : false}
                   />
                 </div>
               </td>
@@ -131,6 +134,7 @@ function LogStoreForm({ id, name, storeData }) {
                     onChange={onChangeDistance}
                     type="text"
                     placeholder="가는데 걸리는 시간(분단위)"
+                    disabled={!editBtnClick ? true : false}
                   />
                   분
                 </div>
