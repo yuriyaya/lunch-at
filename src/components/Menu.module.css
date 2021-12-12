@@ -14,7 +14,7 @@
 
 .mname {
   grid-area: mname;
-  background-color: #fcca46;
+  background-color: #fe7f2d;
   padding: 20px;
   border-radius: 10px 10px 0px 10px / 10px 10px 0px 10px;
 }
@@ -28,13 +28,13 @@
   padding-top: 10px;
   padding-bottom: 10px;
   /* border-top: 1px solid black; */
-  background-color: #fceaba;
+  background-color: #f8c5a4;
 }
 .rate {
   grid-area: rate;
   background-color: #fff;
   padding: 10px;
-  background-color: #fceaba;
+  background-color: #f8c5a4;
   /* border-top: 1px solid black; */
   /* border-right: 1px solid black; */
 }
@@ -46,14 +46,14 @@
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 5px;
-  background-color: #fceaba;
+  background-color: #f8c5a4;
   border-bottom: 3px solid rgb(73, 72, 72);
 }
 .loc {
   grid-area: loc;
   font-size: 12px;
   padding: 5px;
-  background-color: #fceaba;
+  background-color: #f8c5a4;
   border-bottom: 3px solid rgb(73, 72, 72);
   /* border-right: 1px solid black; */
 }
@@ -61,7 +61,7 @@
   grid-area: dist;
   font-size: 12px;
   padding: 5px;
-  background-color: #fceaba;
+  background-color: #f8c5a4;
   border-bottom: 3px solid rgb(73, 72, 72);
 }
 
