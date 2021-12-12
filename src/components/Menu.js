@@ -1,27 +1,17 @@
-import styles from "./Store.module.css";
+import styles from "./Menu.module.css";
 import { Link } from "react-router-dom";
 
-function Store({
-  id,
-  sname,
-  cate,
-  srate,
-  link,
-  loc,
-  distance,
-  max_rate,
-  min_rate,
-  mname,
-  mrate,
-}) {
+function Menu({ id, mname, rate, name, cate, link, loc, distance }) {
   return (
     <div className={styles.gridContainer}>
-      <div className={styles.name}>
-        <b>{sname}</b>
+      <div className={styles.mname}>
+        <b>{mname}</b>
       </div>
       <div className={styles.empty}></div>
-      <div className={styles.cate}>{cate}</div>
-      <div className={styles.rate}>평점: {srate ? srate.toFixed(1) : "-"}</div>
+      <div className={styles.namecate}>
+        {name}({cate})
+      </div>
+      <div className={styles.rate}>평점: {rate ? rate.toFixed(1) : "-"}</div>
       <div className={styles.link}>
         <a href={link} rel="noopener noreferrer" target="_blank">
           <b>&#127968; 링크</b>
@@ -33,4 +23,4 @@ function Store({
   );
 }
 
-export default Store;
+export default Menu;

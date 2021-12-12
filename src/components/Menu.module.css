@@ -1,8 +1,8 @@
 .gridContainer {
   display: grid;
   grid-template-areas:
-    "name name empty empty"
-    "name name cate rate"
+    "mname mname empty empty"
+    "mname mname namecate rate"
     "link dist loc loc";
   grid-gap: 0px;
   background-color: #fff;
@@ -12,8 +12,8 @@
   margin: 5px;
 }
 
-.name {
-  grid-area: name;
+.mname {
+  grid-area: mname;
   background-color: #fcca46;
   padding: 20px;
   border-radius: 10px 10px 0px 10px / 10px 10px 0px 10px;
@@ -22,8 +22,8 @@
   grid-area: empty;
   height: 20px;
 }
-.cate {
-  grid-area: cate;
+.namecate {
+  grid-area: namecate;
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
