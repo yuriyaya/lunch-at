@@ -1,12 +1,13 @@
 import { useState } from "react";
 import styles from "./Log.module.css";
 
-function LogRateForm({ storeEnable, id }) {
+function LogRateForm({ storeEnable, id, mName, storeList }) {
   const [rate, setRate] = useState(3);
   const [comment, setComment] = useState("");
   const [upComplete, setUpComplete] = useState(false);
   const [store, setStore] = useState(""); //store name
   const [userWarn, setUserWarn] = useState(""); //store name
+  const [storeId, setStoreId] = useState(0); //storeId, selected inside of Menu rate form, value is 0 when menu already exist
 
   const onChangeStore = (event) => {
     setStore(event.target.value);
@@ -48,6 +49,18 @@ function LogRateForm({ storeEnable, id }) {
     setUpComplete(true);
   };
 
+  const getStoreId = (storeName) => {
+    let sid = 0;
+    if (store !== "") {
+      for (const i in storeList) {
+        if (storeList[i]["name"] === storeName) {
+          sid = storeList[i]["id"];
+        }
+      }
+    }
+    return sid;
+  };
+
   const addStoreData = async () => {
     const json = await (
       await fetch(`${process.env.REACT_APP_API_HOST}/stores`, {
@@ -67,19 +80,39 @@ function LogRateForm({ storeEnable, id }) {
     // console.log(json);
   };
 
-  const updateMenuRate = async () => {
+  const addMenuData = async (sid) => {
     const json = await (
-      await fetch(`${process.env.REACT_APP_API_HOST}/menu/${id}/menu_ratings`, {
+      await fetch(`${process.env.REACT_APP_API_HOST}/store/${sid}/menus`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          rating: rate,
-          comment: comment,
-          datetime: getDateTimeString(),
+          name: mName,
         }),
       })
+    ).json();
+    console.log(json);
+    updateMenuRate(json.id);
+  };
+
+  const updateMenuRate = async (idToUp) => {
+    console.log("idToUp", idToUp);
+    const json = await (
+      await fetch(
+        `${process.env.REACT_APP_API_HOST}/menu/${idToUp}/menu_ratings`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            rating: rate,
+            comment: comment,
+            datetime: getDateTimeString(),
+          }),
+        }
+      )
     ).json();
     // console.log(json);
     setUpComplete(true);
@@ -87,20 +120,26 @@ function LogRateForm({ storeEnable, id }) {
 
   const updateRate = () => {
     if (storeEnable) {
-      //add store rate
+      //store already exist, add store rate
       updateStoreRate();
     } else {
       if (id < 1) {
-        //add new store, then update rate
+        // new menu!!
+        // (1)check store id
+        // (2) -> if store is not exist, add store id
+        // (3) -> add menu(already know menu is new, becuase id is 0)
+        // (4) -> update menu rating
         if (store !== "") {
-          addStoreData();
-          updateStoreRate();
+          let sid = getStoreId(store); //(1)
+          if (sid === 0) addStoreData(); //(2)
+          addMenuData(sid); //(3)
+          //updateMenuRate(); //(4)
         } else {
           setUserWarn("! 식당 이름을 입력해 주세요");
         }
       } else {
         //update menu rate
-        updateMenuRate();
+        updateMenuRate(id);
       }
     }
   };
@@ -111,13 +150,21 @@ function LogRateForm({ storeEnable, id }) {
         <div>{storeEnable ? "식당" : "메뉴"} 평점 입력</div>
         <div className={styles.secondLevelInputArea}>
           {!storeEnable && id === 0 ? (
-            <input
-              value={store}
-              onChange={onChangeStore}
-              type="text"
-              placeholder="식당이름 입력(필수)"
-              required={true}
-            />
+            <div>
+              <input
+                value={store}
+                onChange={onChangeStore}
+                type="search"
+                placeholder="식당이름 입력(필수)"
+                list="storelist"
+                required={true}
+              />
+              <datalist id="storelist">
+                {storeList.map((i) => (
+                  <option key={i["id"]} value={i["name"]}></option>
+                ))}
+              </datalist>
+            </div>
           ) : null}
         </div>
         <div className={styles.secondLevelInputArea}>

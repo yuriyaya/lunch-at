@@ -139,8 +139,8 @@ function LogStoreMenu() {
             disabled={menuDisable ? true : false}
           />
           <datalist id="storelist">
-            {storelist.map((i, index) => (
-              <option key={index} value={i["name"]}></option>
+            {storelist.map((i) => (
+              <option key={i["id"]} value={i["name"]}></option>
             ))}
           </datalist>
           <button className={styles.buttonGen} onClick={storeSearchClick}>
@@ -183,7 +183,12 @@ function LogStoreMenu() {
           찾기
         </button>
         {newMenuRate ? (
-          <LogRateForm storeEnable={!storeDisable} id={menuId} />
+          <LogRateForm
+            storeEnable={!storeDisable}
+            id={menuId}
+            mName={menu}
+            storeList={storelist}
+          />
         ) : null}
       </div>
     </div>
