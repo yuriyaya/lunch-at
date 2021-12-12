@@ -44,7 +44,7 @@ function LogStoreMenu() {
           if (response.ok) {
             return response.json();
           } else {
-            setNewStore(1);
+            setNewStore(0);
             setNewStoreRate(1);
             return;
           }
@@ -148,7 +148,12 @@ function LogStoreMenu() {
           </button>
         </div>
         {newStoreRate ? (
-          <LogRateForm storeEnable={!storeDisable} id={storeId} />
+          <LogRateForm
+            storeEnable={!storeDisable}
+            id={storeId}
+            name={store}
+            storeList={storelist}
+          />
         ) : null}
         {newStore ? (
           <LogStoreForm id={storeId} name={store} storeData={storeData} />
@@ -186,7 +191,7 @@ function LogStoreMenu() {
           <LogRateForm
             storeEnable={!storeDisable}
             id={menuId}
-            mName={menu}
+            name={menu}
             storeList={storelist}
           />
         ) : null}
