@@ -88,7 +88,7 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
         body: addStoreBody,
       })
     ).json();
-    // console.log(json);
+    // console.log("addStoreData", json);
     if (naUpStoreRate) updateStoreRate(json.id);
     setAddStoreId(json.id);
     if (!naUpStoreRate) addMenuData(json.id);
@@ -106,7 +106,7 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
         }),
       })
     ).json();
-    // console.log(json);
+    // console.log("addMenuData", json);
     updateMenuRate(json.id);
   };
 
@@ -134,6 +134,7 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
 
   const updateRate = () => {
     if (storeEnable) {
+      // console.log("updateRate->store rate");
       if (id < 1) {
         addStoreData(true); //add store & store rating(true)
       } else {
@@ -144,6 +145,7 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
         updateStoreRate(sid);
       }
     } else {
+      // console.log("updateRate->menu rate");
       if (id < 1) {
         // menu id =0, new menu!!
         // (1)check store id
@@ -151,16 +153,22 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
         // (3) -> add menu(already know menu is new, becuase id is 0)
         // (4) -> update menu rating
         if (store !== "") {
+          // console.log("updateRate->menu rate->new menu");
           let sid = getStoreId(store); //(1)
           // console.log("menu rate sid: ", sid);
-          if (sid === 0) addStoreData(false); //(2), add store (false: do not update store rating)
-          // addMenuData(); //(3)
+          if (sid === 0) {
+            addStoreData(false); //(2), add store (false: do not update store rating)
+          } else {
+            //add menu for existing store
+            addMenuData(sid);
+          }
           //updateMenuRate(); //(4) done after addMenuData
         } else {
           setUserWarn("! 식당 이름을 입력해 주세요");
         }
       } else {
         //update menu rate
+        // console.log("updateRate->menu rate->update menu rate");
         updateMenuRate(id);
       }
     }
