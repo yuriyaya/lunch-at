@@ -2,8 +2,11 @@
   display: grid;
   grid-template-areas:
     "name name empty empty"
-    "name name cate rate"
-    "link dist loc loc";
+    "name name cate cate"
+    "link dist loc loc"
+    "rate rate rate rate"
+    "srate srate srate srate"
+    "mrate mrate mrate mrate";
   grid-gap: 0px;
   background-color: #fff;
   padding-left: 10px;
@@ -27,16 +30,13 @@
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  /* border-top: 1px solid black; */
   background-color: #fceaba;
 }
 .rate {
   grid-area: rate;
-  background-color: #fff;
+  margin-left: 20px;
   padding: 10px;
   background-color: #fceaba;
-  /* border-top: 1px solid black; */
-  /* border-right: 1px solid black; */
 }
 .link {
   grid-area: link;
@@ -47,22 +47,48 @@
   padding-bottom: 5px;
   padding-right: 5px;
   background-color: #fceaba;
-  border-bottom: 3px solid rgb(73, 72, 72);
 }
 .loc {
   grid-area: loc;
   font-size: 12px;
   padding: 5px;
   background-color: #fceaba;
-  border-bottom: 3px solid rgb(73, 72, 72);
-  /* border-right: 1px solid black; */
 }
 .dist {
   grid-area: dist;
   font-size: 12px;
   padding: 5px;
   background-color: #fceaba;
-  border-bottom: 3px solid rgb(73, 72, 72);
+}
+.srate {
+  grid-area: srate;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 0px;
+  font-size: 12px;
+}
+.mrate {
+  grid-area: mrate;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 0px;
+  font-size: 12px;
+}
+
+.centerCell {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  border-style: dotted;
 }
 
 a {
