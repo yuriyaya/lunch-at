@@ -49,7 +49,7 @@ function StoreFull() {
       if (sratings[r]["rating"] < min) min = sratings[r]["rating"];
       if (sratings[r]["rating"] > max) max = sratings[r]["rating"];
     }
-    avg = (avg / cnt).toFixed(2);
+    if (avg !== 0) avg = (avg / cnt).toFixed(2);
     setSrateStat({ avg: avg, max: max, min: min, cnt: cnt });
   };
 
@@ -74,9 +74,10 @@ function StoreFull() {
         <div className={styles.dist}>약 {storeInfo.distance}분</div>
         <div className={styles.loc}>{storeInfo.loc_quick}</div>
         <div className={styles.rate}>
-          평균: {srateStat.avg} (총 {srateStat.cnt}개의 평가) <br />
-          최고: {srateStat.max} / 최저:
-          {srateStat.min}
+          평균: {srateStat.avg ? srateStat.avg : "-"} (총 {srateStat.cnt}개의
+          평가) <br />
+          최고: {srateStat.cnt ? srateStat.max : "-"} / 최저:
+          {srateStat.cnt ? srateStat.min : "-"}
         </div>
         <div className={styles.srate}>
           <b>식당 평점</b>
@@ -119,7 +120,10 @@ function StoreFull() {
           <b>메뉴 평점</b>
           <br />
           {storeMenus.map((m) => (
-            <b>{m.name}</b>
+            <b>
+              {m.name}
+              <br />
+            </b>
           ))}
         </div>
       </div>
