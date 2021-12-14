@@ -17,7 +17,9 @@ function Store({
   return (
     <div className={styles.gridContainer}>
       <div className={styles.name}>
-        <b>{sname}</b>
+        <Link to={`/find/store/${id}`}>
+          <b>{sname}</b>
+        </Link>
       </div>
       <div className={styles.empty}></div>
       <div className={styles.cate}>{cate}</div>

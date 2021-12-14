@@ -71,6 +71,7 @@ function FindRandomMain() {
             {srList.map((sr) => (
               <Store
                 key={sr.id}
+                id={sr.id}
                 sname={sr.name}
                 cate={sr.category}
                 srate={sr.avg_rate}

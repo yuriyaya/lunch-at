@@ -1,0 +1,85 @@
+.gridContainer {
+  display: grid;
+  grid-template-areas:
+    "name name empty empty"
+    "name name cate rate"
+    "link dist loc loc";
+  grid-gap: 0px;
+  background-color: #fff;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 5px;
+}
+
+.name {
+  grid-area: name;
+  background-color: #fcca46;
+  padding: 20px;
+  border-radius: 10px 10px 0px 10px / 10px 10px 0px 10px;
+}
+.empty {
+  grid-area: empty;
+  height: 20px;
+}
+.cate {
+  grid-area: cate;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* border-top: 1px solid black; */
+  background-color: #fceaba;
+}
+.rate {
+  grid-area: rate;
+  background-color: #fff;
+  padding: 10px;
+  background-color: #fceaba;
+  /* border-top: 1px solid black; */
+  /* border-right: 1px solid black; */
+}
+.link {
+  grid-area: link;
+  font-size: 12px;
+  margin-left: 20px;
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  background-color: #fceaba;
+  border-bottom: 3px solid rgb(73, 72, 72);
+}
+.loc {
+  grid-area: loc;
+  font-size: 12px;
+  padding: 5px;
+  background-color: #fceaba;
+  border-bottom: 3px solid rgb(73, 72, 72);
+  /* border-right: 1px solid black; */
+}
+.dist {
+  grid-area: dist;
+  font-size: 12px;
+  padding: 5px;
+  background-color: #fceaba;
+  border-bottom: 3px solid rgb(73, 72, 72);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+  color: black;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
