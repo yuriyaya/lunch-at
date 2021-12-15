@@ -19,7 +19,7 @@
   grid-area: name;
   background-color: #fcca46;
   padding: 20px;
-  border-radius: 10px 10px 0px 10px / 10px 10px 0px 10px;
+  border-radius: 10px 10px 0px 0px / 10px 10px 0px 0px;
 }
 .empty {
   grid-area: empty;
@@ -34,14 +34,12 @@
 }
 .rate {
   grid-area: rate;
-  margin-left: 20px;
   padding: 10px;
   background-color: #fceaba;
 }
 .link {
   grid-area: link;
   font-size: 12px;
-  margin-left: 20px;
   padding-left: 15px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -62,18 +60,14 @@
 }
 .srate {
   grid-area: srate;
-  padding-left: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-right: 0px;
   font-size: 12px;
 }
 .mrate {
   grid-area: mrate;
-  padding-left: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-right: 0px;
   font-size: 12px;
 }
 
@@ -81,14 +75,34 @@
   text-align: center;
 }
 
+.menuName {
+  background-color: #fceaba;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
 table {
   width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+  border-style: dotted;
 }
 
 td {
   border: 1px solid black;
-  border-collapse: collapse;
   border-style: dotted;
+}
+
+.rateCell {
+  width: 30px;
+  text-align: center;
+}
+
+.dateCell {
+  width: 70px;
+  text-align: center;
 }
 
 a {

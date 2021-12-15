@@ -99,6 +99,7 @@ function FindRandomMain() {
             {mrList.map((mr) => (
               <Menu
                 key={mr.id}
+                id={mr.store_id}
                 mname={mr.mname}
                 rate={mr.avg_rate}
                 name={mr.name}

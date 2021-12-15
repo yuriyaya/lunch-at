@@ -9,7 +9,9 @@ function Menu({ id, mname, rate, name, cate, link, loc, distance }) {
       </div>
       <div className={styles.empty}></div>
       <div className={styles.namecate}>
-        {name}({cate})
+        <Link to={`/find/store/${id}`}>
+          {name}({cate})
+        </Link>
       </div>
       <div className={styles.rate}>평점: {rate ? rate.toFixed(1) : "-"}</div>
       <div className={styles.link}>
