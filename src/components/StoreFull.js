@@ -70,82 +70,84 @@ function StoreFull() {
   };
 
   const mrateStatistics = (mratings) => {
-    let min = 5;
-    let max = 0;
-    let avg = 0;
-    let cnt = 0;
-    let menuName = mratings[0]["name"];
-    let newMenuData = [];
-    let newMrateStat = {};
-    let newRateList = [];
-    for (const mr in mratings) {
-      if (mratings[mr]["name"] !== menuName) {
-        //new menu data
-        newMrateStat = {
-          name: menuName,
-          avg: (avg / cnt).toFixed(2),
-          max: max,
-          min: min,
-          cnt: cnt,
-          ratelist: newRateList,
-        };
-        // console.log(newMrateStat);
-        newMenuData.push(newMrateStat);
+    if (mratings.length > 0) {
+      let min = 5;
+      let max = 0;
+      let avg = 0;
+      let cnt = 0;
+      let menuName = mratings[0]["name"];
+      let newMenuData = [];
+      let newMrateStat = {};
+      let newRateList = [];
+      for (const mr in mratings) {
+        if (mratings[mr]["name"] !== menuName) {
+          //new menu data
+          newMrateStat = {
+            name: menuName,
+            avg: (avg / cnt).toFixed(2),
+            max: max,
+            min: min,
+            cnt: cnt,
+            ratelist: newRateList,
+          };
+          // console.log(newMrateStat);
+          newMenuData.push(newMrateStat);
 
-        //reset data for new menu
-        min = 5;
-        max = 0;
-        avg = 0;
-        cnt = 0;
-        menuName = mratings[mr]["name"];
-        newMrateStat = [];
-        newRateList = [];
+          //reset data for new menu
+          min = 5;
+          max = 0;
+          avg = 0;
+          cnt = 0;
+          menuName = mratings[mr]["name"];
+          newMrateStat = [];
+          newRateList = [];
 
-        //update with new menu
-        avg = avg + mratings[mr]["rating"];
-        if (mratings[mr]["rating"] > max) max = mratings[mr]["rating"];
-        if (mratings[mr]["rating"] < min) min = mratings[mr]["rating"];
-        cnt++;
-        newRateList.push({
-          rate: mratings[mr]["rating"],
-          comment: mratings[mr]["comment"],
-          date: mratings[mr]["datetime"].substring(0, 10),
-        });
-      } else if (Number(mr) === mratings.length - 1) {
-        //last rating data
-        avg = avg + mratings[mr]["rating"];
-        if (mratings[mr]["rating"] > max) max = mratings[mr]["rating"];
-        if (mratings[mr]["rating"] < min) min = mratings[mr]["rating"];
-        cnt++;
-        newRateList.push({
-          rate: mratings[mr]["rating"],
-          comment: mratings[mr]["comment"],
-          date: mratings[mr]["datetime"].substring(0, 10),
-        });
-        newMrateStat = {
-          name: menuName,
-          avg: (avg / cnt).toFixed(2),
-          max: max,
-          min: min,
-          cnt: cnt,
-          ratelist: newRateList,
-        };
-        newMenuData.push(newMrateStat);
-      } else {
-        //same menu data
-        avg = avg + mratings[mr]["rating"];
-        if (mratings[mr]["rating"] > max) max = mratings[mr]["rating"];
-        if (mratings[mr]["rating"] < min) min = mratings[mr]["rating"];
-        cnt++;
-        newRateList.push({
-          rate: mratings[mr]["rating"],
-          comment: mratings[mr]["comment"],
-          date: mratings[mr]["datetime"].substring(0, 10),
-        });
-        // console.log(newRateList);
+          //update with new menu
+          avg = avg + mratings[mr]["rating"];
+          if (mratings[mr]["rating"] > max) max = mratings[mr]["rating"];
+          if (mratings[mr]["rating"] < min) min = mratings[mr]["rating"];
+          cnt++;
+          newRateList.push({
+            rate: mratings[mr]["rating"],
+            comment: mratings[mr]["comment"],
+            date: mratings[mr]["datetime"].substring(0, 10),
+          });
+        } else if (Number(mr) === mratings.length - 1) {
+          //last rating data
+          avg = avg + mratings[mr]["rating"];
+          if (mratings[mr]["rating"] > max) max = mratings[mr]["rating"];
+          if (mratings[mr]["rating"] < min) min = mratings[mr]["rating"];
+          cnt++;
+          newRateList.push({
+            rate: mratings[mr]["rating"],
+            comment: mratings[mr]["comment"],
+            date: mratings[mr]["datetime"].substring(0, 10),
+          });
+          newMrateStat = {
+            name: menuName,
+            avg: (avg / cnt).toFixed(2),
+            max: max,
+            min: min,
+            cnt: cnt,
+            ratelist: newRateList,
+          };
+          newMenuData.push(newMrateStat);
+        } else {
+          //same menu data
+          avg = avg + mratings[mr]["rating"];
+          if (mratings[mr]["rating"] > max) max = mratings[mr]["rating"];
+          if (mratings[mr]["rating"] < min) min = mratings[mr]["rating"];
+          cnt++;
+          newRateList.push({
+            rate: mratings[mr]["rating"],
+            comment: mratings[mr]["comment"],
+            date: mratings[mr]["datetime"].substring(0, 10),
+          });
+          // console.log(newRateList);
+        }
       }
+      setNewMenuRatingData(newMenuData);
     }
-    setNewMenuRatingData(newMenuData);
   };
 
   useEffect(() => {
