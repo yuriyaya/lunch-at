@@ -6,9 +6,8 @@
     "link dist loc loc";
   grid-gap: 0px;
   background-color: #fff;
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin: 5px;
 }
 
@@ -16,7 +15,7 @@
   grid-area: name;
   background-color: #fcca46;
   padding: 20px;
-  border-radius: 10px 10px 0px 10px / 10px 10px 0px 10px;
+  border-radius: 10px 10px 0px 0px / 10px 10px 0px 0px;
 }
 .empty {
   grid-area: empty;
@@ -27,7 +26,6 @@
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  /* border-top: 1px solid black; */
   background-color: #fceaba;
 }
 .rate {
@@ -35,14 +33,11 @@
   background-color: #fff;
   padding: 10px;
   background-color: #fceaba;
-  /* border-top: 1px solid black; */
-  /* border-right: 1px solid black; */
 }
 .link {
   grid-area: link;
   font-size: 12px;
-  margin-left: 20px;
-  padding-left: 15px;
+  padding-left: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 5px;
@@ -55,7 +50,6 @@
   padding: 5px;
   background-color: #fceaba;
   border-bottom: 3px solid rgb(73, 72, 72);
-  /* border-right: 1px solid black; */
 }
 .dist {
   grid-area: dist;

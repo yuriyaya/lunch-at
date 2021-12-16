@@ -11,6 +11,13 @@
   padding: 20px;
 }
 
+.storeInfoInputArea {
+  padding: 0px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+}
+
 .divDisplay {
   display: block;
 }
@@ -27,6 +34,12 @@
 input {
   padding: 5px;
   margin: 5px;
+}
+
+.starRating button {
+  font-size: 25px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .on {

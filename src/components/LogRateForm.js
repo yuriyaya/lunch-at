@@ -198,7 +198,7 @@ function LogRateForm({ storeEnable, id, name, storeList }) {
           ) : null}
         </div>
         <div className={styles.secondLevelInputArea}>
-          <div className="starRating">
+          <div className={styles.starRating}>
             {[...Array(5)].map((star, index) => {
               index += 1;
               return (

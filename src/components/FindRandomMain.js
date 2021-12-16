@@ -65,7 +65,8 @@ function FindRandomMain() {
             &#127922;<b>식당 랜덤 보기</b>
           </div>
           <div className={styles.randomDescription}>
-            입력된 모든 식당 중 랜덤으로 3곳을 선정하여 표시합니다.
+            입력된 모든 식당 중 랜덤으로 3곳을 선정하여 표시합니다. <br />
+            식당 이름을 누르시면 자세한 정보를 볼 수 있습니다.
           </div>
           <div className={styles.secondLevelDiv}>
             {srList.map((sr) => (
@@ -93,7 +94,8 @@ function FindRandomMain() {
             &#127922;<b>메뉴 랜덤 보기</b>
           </div>
           <div className={styles.randomDescription}>
-            입력된 모든 메뉴 중 랜덤으로 3가지를 선정하여 표시합니다.
+            입력된 모든 메뉴 중 랜덤으로 3가지를 선정하여 표시합니다. <br />
+            식당 이름을 누르시면 자세한 정보를 볼 수 있습니다.
           </div>
           <div className={styles.secondLevelDiv}>
             {mrList.map((mr) => (
