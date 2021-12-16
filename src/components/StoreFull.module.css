@@ -83,24 +83,28 @@
   margin-bottom: 5px;
 }
 
-table {
+.borderTable {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid black;
   border-style: dotted;
 }
 
-td {
+.borderTableCell {
   border: 1px solid black;
   border-style: dotted;
 }
 
 .rateCell {
+  border: 1px solid black;
+  border-style: dotted;
   width: 30px;
   text-align: center;
 }
 
 .dateCell {
+  border: 1px solid black;
+  border-style: dotted;
   width: 70px;
   text-align: center;
 }

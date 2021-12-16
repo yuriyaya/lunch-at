@@ -180,12 +180,12 @@ function StoreFull() {
             {srateStat.cnt ? srateStat.min : "-"}
           </div>
           <div className={styles.srate}>
-            <table>
+            <table className={styles.borderTable}>
               <tbody>
                 {storeRatings.map((sr, index) => (
                   <tr key={index}>
                     <td className={styles.rateCell}>{sr.rating}</td>
-                    <td>{sr.comment}</td>
+                    <td className={styles.borderTableCell}>{sr.comment}</td>
                     <td className={styles.dateCell}>
                       {sr.datetime.substring(0, 10)}
                     </td>
