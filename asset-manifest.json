@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/lunch-at/static/css/main.3b1cfba3.chunk.css",
-    "main.js": "/lunch-at/static/js/main.aa9ce86c.chunk.js",
-    "main.js.map": "/lunch-at/static/js/main.aa9ce86c.chunk.js.map",
+    "main.css": "/lunch-at/static/css/main.9bb6c376.chunk.css",
+    "main.js": "/lunch-at/static/js/main.fbc4c7a4.chunk.js",
+    "main.js.map": "/lunch-at/static/js/main.fbc4c7a4.chunk.js.map",
     "runtime-main.js": "/lunch-at/static/js/runtime-main.c9191db8.js",
     "runtime-main.js.map": "/lunch-at/static/js/runtime-main.c9191db8.js.map",
     "static/js/2.2392a5db.chunk.js": "/lunch-at/static/js/2.2392a5db.chunk.js",
     "static/js/2.2392a5db.chunk.js.map": "/lunch-at/static/js/2.2392a5db.chunk.js.map",
     "index.html": "/lunch-at/index.html",
-    "static/css/main.3b1cfba3.chunk.css.map": "/lunch-at/static/css/main.3b1cfba3.chunk.css.map",
+    "static/css/main.9bb6c376.chunk.css.map": "/lunch-at/static/css/main.9bb6c376.chunk.css.map",
     "static/js/2.2392a5db.chunk.js.LICENSE.txt": "/lunch-at/static/js/2.2392a5db.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c9191db8.js",
     "static/js/2.2392a5db.chunk.js",
-    "static/css/main.3b1cfba3.chunk.css",
-    "static/js/main.aa9ce86c.chunk.js"
+    "static/css/main.9bb6c376.chunk.css",
+    "static/js/main.fbc4c7a4.chunk.js"
   ]
 }
