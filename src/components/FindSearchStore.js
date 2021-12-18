@@ -77,7 +77,7 @@ function FindSearchStore() {
         (rate !== "" ? `ratings=${rate}` : "");
     } else {
     }
-    console.log(queryStr);
+    // console.log(queryStr);
     if (queryStr !== "") {
       fetch(queryStr)
         .then((response) => {

@@ -6,11 +6,13 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 function FindSearchMenu() {
   return (
     <div>
-      <div className={styles.searchTitle}>
-        <FontAwesomeIcon icon={faSearch} />
-        <b> 메뉴 검색 </b>
-        <span style={{ fontSize: "small" }}>바로가기</span>
-      </div>
+      <Link to={`/find/menus/search`}>
+        <div className={styles.searchTitle}>
+          <FontAwesomeIcon icon={faSearch} />
+          <b> 메뉴 검색 </b>
+          <span style={{ fontSize: "small" }}>바로가기</span>
+        </div>
+      </Link>
     </div>
   );
 }

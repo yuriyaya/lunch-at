@@ -4,6 +4,7 @@ import Log from "./routes/Log";
 import Find from "./routes/Find";
 import StoreInfo from "./routes/StoreInfo";
 import SearchStore from "./routes/SearchStore";
+import SearchMenu from "./routes/SearchMenu";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/find" element={<Find />} />
         <Route path="/find/store/:sid" element={<StoreInfo />} />
         <Route path="/find/stores/search" element={<SearchStore />} />
+        <Route path="/find/menus/search" element={<SearchMenu />} />
       </Routes>
     </BrowserRouter>
   );
