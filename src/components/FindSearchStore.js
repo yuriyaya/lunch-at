@@ -101,10 +101,9 @@ function FindSearchStore() {
         <FontAwesomeIcon icon={faSearch} />
         <b> 식당 검색</b>
       </div>
-
-      <div className={styles.secondLevelDiv}>
-        <div>
-          <span>이름 검색</span>
+      <div className={styles.gridContainer}>
+        <div className={styles.labelname}>이름 검색</div>
+        <div className={styles.inname}>
           <input
             value={store}
             onChange={onChangeStore}
@@ -118,8 +117,8 @@ function FindSearchStore() {
             ))}
           </datalist>
         </div>
-        <div>
-          <span>음식 종류</span>
+        <div className={styles.labelcate}>음식 종류</div>
+        <div className={styles.incate}>
           <input
             value={category}
             onChange={onChangeCategory}
@@ -133,8 +132,8 @@ function FindSearchStore() {
             ))}
           </datalist>
         </div>
-        <div>
-          <span>걸리는 시간(분)</span>
+        <div className={styles.labeldist}>걸리는 시간(분)</div>
+        <div className={styles.indist}>
           <input
             value={distance}
             onChange={onChangeDistance}
@@ -142,8 +141,8 @@ function FindSearchStore() {
             placeholder="가는데 걸리는 시간, (최대)"
           ></input>
         </div>
-        <div>
-          <span>평점</span>
+        <div className={styles.labelrate}>평점</div>
+        <div className={styles.inrate}>
           <input
             value={rate}
             onChange={onChangeRate}
@@ -151,11 +150,14 @@ function FindSearchStore() {
             placeholder="최소 평점"
           ></input>
         </div>
-        <div>
+        <div className={styles.empty}></div>
+        <div className={styles.btn}>
           <button className={styles.buttonGen} onClick={storeSearchClick}>
             검색
           </button>
         </div>
+      </div>
+      <div className={styles.secondLevelDiv}>
         <div>
           {storeData.length
             ? storeData.map((sr) => (
