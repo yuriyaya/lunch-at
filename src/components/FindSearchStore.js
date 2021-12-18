@@ -6,13 +6,33 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function FindSearchStore() {
   const [store, setStore] = useState(""); //store name
+  const [category, setCategory] = useState(""); //store category
+  const [distance, setDistance] = useState(""); //store distance
+  const [rate, setRate] = useState(""); //store rating
   const [storelist, setStorelist] = useState([]); // for UI, all store name list
-  const [nameSearch, setNameSearch] = useState(true);
-  const [storeId, setStoreId] = useState(0); //search store id
   const [storeData, setStoreData] = useState([]);
+  const [cateList, setCateList] = useState([]);
 
   const onChangeStore = (event) => {
     setStore(event.target.value);
+    setCategory("");
+    setDistance("");
+    setRate("");
+  };
+
+  const onChangeCategory = (event) => {
+    setCategory(event.target.value);
+    setStore("");
+  };
+
+  const onChangeDistance = (event) => {
+    setDistance(event.target.value);
+    setStore("");
+  };
+
+  const onChangeRate = (event) => {
+    setRate(event.target.value);
+    setStore("");
   };
 
   useEffect(() => {
@@ -23,18 +43,43 @@ function FindSearchStore() {
       .then((data) => {
         setStorelist(data);
       });
+
+    fetch(`${process.env.REACT_APP_API_HOST}/stores/categorylist`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setCateList(data);
+      });
   }, []);
 
   const storeSearchClick = (event) => {
-    if (store === "") return;
+    if (store === "" && category === "" && distance === "" && rate === "")
+      return;
     //REST API : search store name
     searchStore();
   };
 
   const searchStore = async () => {
-    // console.log(`${apiHost}/stores/search?name=${store}`);
+    let queryStr = "";
     if (store !== "") {
-      fetch(`${process.env.REACT_APP_API_HOST}/stores/search?name=${store}`)
+      queryStr = `${process.env.REACT_APP_API_HOST}/stores/search?name=${store}`;
+    } else if (category !== "" || distance !== "" || rate !== "") {
+      queryStr = `${process.env.REACT_APP_API_HOST}/stores/search?`;
+      queryStr =
+        queryStr +
+        (category !== "" ? `category=${category}` : "") +
+        (category !== "" && distance !== "" ? "&" : "") +
+        (distance !== "" ? `distance=${distance}` : "") +
+        ((distance !== "" && rate !== "") || (category !== "" && rate !== "")
+          ? "&"
+          : "") +
+        (rate !== "" ? `ratings=${rate}` : "");
+    } else {
+    }
+    console.log(queryStr);
+    if (queryStr !== "") {
+      fetch(queryStr)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -56,24 +101,61 @@ function FindSearchStore() {
         <FontAwesomeIcon icon={faSearch} />
         <b> 식당 검색</b>
       </div>
+
       <div className={styles.secondLevelDiv}>
-        <span>이름 검색</span>
-        <input
-          value={store}
-          onChange={onChangeStore}
-          type="search"
-          placeholder="식당이름 입력/선택"
-          list="storelist"
-          disabled={nameSearch ? false : true}
-        />
-        <datalist id="storelist">
-          {storelist.map((i) => (
-            <option key={i["id"]} value={i["name"]}></option>
-          ))}
-        </datalist>
-        <button className={styles.buttonGen} onClick={storeSearchClick}>
-          검색
-        </button>
+        <div>
+          <span>이름 검색</span>
+          <input
+            value={store}
+            onChange={onChangeStore}
+            type="search"
+            placeholder="식당이름 입력/선택"
+            list="storelist"
+          />
+          <datalist id="storelist">
+            {storelist.map((i) => (
+              <option key={i["id"]} value={i["name"]}></option>
+            ))}
+          </datalist>
+        </div>
+        <div>
+          <span>음식 종류</span>
+          <input
+            value={category}
+            onChange={onChangeCategory}
+            type="search"
+            placeholder="음식 종류 입력/선택"
+            list="catelist"
+          />
+          <datalist id="catelist">
+            {cateList.map((i, index) => (
+              <option key={index} value={i["category"]}></option>
+            ))}
+          </datalist>
+        </div>
+        <div>
+          <span>걸리는 시간(분)</span>
+          <input
+            value={distance}
+            onChange={onChangeDistance}
+            type="number"
+            placeholder="가는데 걸리는 시간, (최대)"
+          ></input>
+        </div>
+        <div>
+          <span>평점</span>
+          <input
+            value={rate}
+            onChange={onChangeRate}
+            type="number"
+            placeholder="최소 평점"
+          ></input>
+        </div>
+        <div>
+          <button className={styles.buttonGen} onClick={storeSearchClick}>
+            검색
+          </button>
+        </div>
         <div>
           {storeData.length
             ? storeData.map((sr) => (
@@ -82,7 +164,7 @@ function FindSearchStore() {
                   id={sr.id}
                   sname={sr.name}
                   cate={sr.category}
-                  srate={sr.avg_rate}
+                  srate={sr.avg_rating}
                   link={sr.link}
                   loc={sr.loc_quick}
                   distance={sr.distance}
