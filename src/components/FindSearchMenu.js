@@ -43,21 +43,27 @@ function FindSearchMenu() {
     for (const i in json) {
       //menu search
       // console.log(json[i]);
-      if (menu !== "" && rate !== "") {
+      let menuStr = "";
+      if (menu.indexOf("(") > -1) {
+        menuStr = menu.split("(")[0];
+      } else {
+        menuStr = menu;
+      }
+      if (menuStr !== "" && rate !== "") {
         //both search
         if (
-          json[i]["mname"].includes(menu) &&
+          json[i]["mname"].includes(menuStr) &&
           json[i]["avg_rate"] >= parseFloat(rate)
         ) {
           searchResult.push(json[i]);
         }
-      } else if (menu !== "" && rate === "") {
-        //rate only search
-        if (json[i]["mname"].includes(menu)) {
+      } else if (menuStr !== "" && rate === "") {
+        //menu only search
+        if (json[i]["mname"].includes(menuStr)) {
           searchResult.push(json[i]);
         }
-      } else if (menu === "" && rate !== "") {
-        // menu only search
+      } else if (menuStr === "" && rate !== "") {
+        // rate only search
         if (json[i]["avg_rate"] >= parseFloat(rate)) {
           searchResult.push(json[i]);
         }
