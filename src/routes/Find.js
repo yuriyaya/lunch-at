@@ -1,15 +1,15 @@
 import HomeWhat from "../components/HomeWhat";
-import FindRandomMain from "../components/FindRandomMain";
-import FindSearchStore from "../components/FindSearchStore";
-import FindSearchMenu from "../components/FindSearchMenu";
+import FindRandomShort from "../components/FindRandomShort";
+import FindSearchStoreShort from "../components/FindSearchStoreShort";
+import FindSearchMenuShort from "../components/FindSearchMenuShort";
 
 function Find() {
   return (
     <div>
       <HomeWhat />
-      <FindRandomMain />
-      <FindSearchStore />
-      <FindSearchMenu />
+      <FindSearchStoreShort />
+      <FindSearchMenuShort />
+      <FindRandomShort />
     </div>
   );
 }

@@ -1,0 +1,95 @@
+.gridContainer {
+  display: grid;
+  grid-template-areas:
+    "labelname inname"
+    "labelcate incate"
+    "labeldist indist"
+    "labelrate inrate"
+    "empty btn";
+  grid-gap: 0px;
+  background-color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  align-items: center;
+  justify-content: left;
+}
+
+.labelname {
+  grid-area: labelname;
+}
+
+.inname {
+  grid-area: inname;
+}
+
+.labelcate {
+  grid-area: labelcate;
+}
+
+.incate {
+  grid-area: incate;
+}
+
+.labeldist {
+  grid-area: labeldist;
+}
+
+.indist {
+  grid-area: indist;
+}
+
+.labelrate {
+  grid-area: labelrate;
+}
+
+.inrate {
+  grid-area: inrate;
+}
+
+.empty {
+  grid-area: empty;
+}
+
+.btn {
+  grid-area: btn;
+}
+
+.firstLevelDiv {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.secondLevelDiv {
+  padding-left: 10px;
+}
+
+.searchTitle {
+  font-size: large;
+  margin-top: 20px;
+}
+
+.buttonGen {
+  margin: 5px;
+  padding: 5px;
+  width: 30%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+  color: black;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}

@@ -73,7 +73,7 @@ function FindRandomMain() {
               <FontAwesomeIcon icon={faUtensils} />
             </span>
             <span>
-              <b> 식당 랜덤 보기</b>
+              <b> 식당 랜덤 선택 </b>
             </span>
             <span>
               <FontAwesomeIcon icon={faDice} />
@@ -110,7 +110,7 @@ function FindRandomMain() {
               <FontAwesomeIcon icon={faHamburger} />
             </span>
             <span>
-              <b> 메뉴 랜덤 보기</b>
+              <b> 메뉴 랜덤 선택 </b>
             </span>
             <span>
               <FontAwesomeIcon icon={faDice} />
