@@ -7,9 +7,9 @@ function Find() {
   return (
     <div>
       <HomeWhat />
-      <FindRandomMain />
       <FindSearchStore />
       <FindSearchMenu />
+      <FindRandomMain />
     </div>
   );
 }
