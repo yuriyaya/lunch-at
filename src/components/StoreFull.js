@@ -3,6 +3,15 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import HomeWhat from "./HomeWhat";
 import StoreFullMenuRatings from "./StoreFullMenuRatings";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faStar,
+  faLink,
+  faWalking,
+  faMapMarkerAlt,
+  faCaretUp,
+  faCaretDown,
+} from "@fortawesome/free-solid-svg-icons";
 
 function StoreFull() {
   const { sid } = useParams();
@@ -65,7 +74,7 @@ function StoreFull() {
       if (sratings[r]["rating"] < min) min = sratings[r]["rating"];
       if (sratings[r]["rating"] > max) max = sratings[r]["rating"];
     }
-    if (avg !== 0) avg = (avg / cnt).toFixed(2);
+    if (avg !== 0) avg = (avg / cnt).toFixed(1);
     setSrateStat({ avg: avg, max: max, min: min, cnt: cnt });
   };
 
@@ -84,7 +93,7 @@ function StoreFull() {
           //new menu data
           newMrateStat = {
             name: menuName,
-            avg: (avg / cnt).toFixed(2),
+            avg: (avg / cnt).toFixed(1),
             max: max,
             min: min,
             cnt: cnt,
@@ -125,7 +134,7 @@ function StoreFull() {
           });
           newMrateStat = {
             name: menuName,
-            avg: (avg / cnt).toFixed(2),
+            avg: (avg / cnt).toFixed(1),
             max: max,
             min: min,
             cnt: cnt,
@@ -168,15 +177,23 @@ function StoreFull() {
           <div className={styles.cate}>{storeInfo.category}</div>
           <div className={styles.link}>
             <a href={storeInfo.link} rel="noopener noreferrer" target="_blank">
-              <b>&#127968; 링크</b>
+              <FontAwesomeIcon icon={faLink} />
+              <b> 링크</b>
             </a>
           </div>
-          <div className={styles.dist}>약 {storeInfo.distance}분</div>
-          <div className={styles.loc}>{storeInfo.loc_quick}</div>
+          <div className={styles.dist}>
+            <FontAwesomeIcon icon={faWalking} /> 약 {storeInfo.distance}분
+          </div>
+          <div className={styles.loc}>
+            <FontAwesomeIcon icon={faMapMarkerAlt} /> {storeInfo.loc_quick}
+          </div>
           <div className={styles.rate}>
-            평균: {srateStat.avg ? srateStat.avg : "-"} (총 {srateStat.cnt}개의
-            평가) <br />
-            최고: {srateStat.cnt ? srateStat.max : "-"} / 최저:
+            <FontAwesomeIcon icon={faStar} />{" "}
+            {srateStat.avg ? srateStat.avg : "-"} (총 {srateStat.cnt}개의 평가){" "}
+            <br />
+            <FontAwesomeIcon icon={faCaretUp} />{" "}
+            {srateStat.cnt ? srateStat.max : "-"} /{" "}
+            <FontAwesomeIcon icon={faCaretDown} />{" "}
             {srateStat.cnt ? srateStat.min : "-"}
           </div>
           <div className={styles.srate}>

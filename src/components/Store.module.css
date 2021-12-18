@@ -8,7 +8,6 @@
   background-color: #fff;
   padding-top: 5px;
   padding-bottom: 5px;
-  margin: 5px;
 }
 
 .name {
@@ -42,21 +41,18 @@
   padding-bottom: 5px;
   padding-right: 5px;
   background-color: #fceaba;
-  border-bottom: 3px solid rgb(73, 72, 72);
 }
 .loc {
   grid-area: loc;
   font-size: 12px;
   padding: 5px;
   background-color: #fceaba;
-  border-bottom: 3px solid rgb(73, 72, 72);
 }
 .dist {
   grid-area: dist;
   font-size: 12px;
   padding: 5px;
   background-color: #fceaba;
-  border-bottom: 3px solid rgb(73, 72, 72);
 }
 
 a {

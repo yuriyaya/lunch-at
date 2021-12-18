@@ -7,6 +7,10 @@
   padding-left: 0px;
 }
 
+.randomTitle {
+  font-size: large;
+}
+
 .randomDescription {
   font-size: small;
 }

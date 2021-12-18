@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import Store from "./Store";
 import Menu from "./Menu";
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUtensils,
+  faDice,
+  faHamburger,
+} from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function FindRandomMain() {
   const [loading, setLoading] = useState(false);
@@ -61,8 +68,16 @@ function FindRandomMain() {
     <div>
       {loading ? (
         <div className={styles.firstLevelDiv}>
-          <div>
-            &#127922;<b>식당 랜덤 보기</b>
+          <div className={styles.randomTitle}>
+            <span>
+              <FontAwesomeIcon icon={faUtensils} />
+            </span>
+            <span>
+              <b> 식당 랜덤 보기</b>
+            </span>
+            <span>
+              <FontAwesomeIcon icon={faDice} />
+            </span>
           </div>
           <div className={styles.randomDescription}>
             입력된 모든 식당 중 랜덤으로 3곳을 선정하여 표시합니다. <br />
@@ -90,8 +105,16 @@ function FindRandomMain() {
       )}
       {loading ? (
         <div className={styles.firstLevelDiv}>
-          <div>
-            &#127922;<b>메뉴 랜덤 보기</b>
+          <div className={styles.randomTitle}>
+            <span>
+              <FontAwesomeIcon icon={faHamburger} />
+            </span>
+            <span>
+              <b> 메뉴 랜덤 보기</b>
+            </span>
+            <span>
+              <FontAwesomeIcon icon={faDice} />
+            </span>
           </div>
           <div className={styles.randomDescription}>
             입력된 모든 메뉴 중 랜덤으로 3가지를 선정하여 표시합니다. <br />

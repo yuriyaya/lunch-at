@@ -1,4 +1,10 @@
 import styles from "./StoreFull.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faStar,
+  faCaretUp,
+  faCaretDown,
+} from "@fortawesome/free-solid-svg-icons";
 
 function StoreFullMenuRatings({ mrData }) {
   return (
@@ -8,8 +14,10 @@ function StoreFullMenuRatings({ mrData }) {
           <div className={styles.menuName}>
             <b>{mr.name}</b>
             <br />
-            평균: {mr.avg} (총 {mr.cnt}개의 평가), 최고: {mr.max} / 최저:{" "}
-            {mr.min}
+            <FontAwesomeIcon icon={faStar} /> {mr.avg} (총 {mr.cnt}개의 평가)
+            <br />
+            <FontAwesomeIcon icon={faCaretUp} /> {mr.max} /{" "}
+            <FontAwesomeIcon icon={faCaretDown} /> {mr.min}
           </div>
           <table className={styles.borderTable}>
             {mr.ratelist.map((c, index) => (
