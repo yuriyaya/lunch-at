@@ -39,11 +39,11 @@ function FindRandomMain() {
     setLoading(true);
     const randNum = randomNum(json.length);
     // console.log(randNum);
-    let randomPickStore = [];
+    let randomPickMenu = [];
     for (const i in randNum) {
-      randomPickStore.push(json[randNum[i] - 1]);
+      randomPickMenu.push(json[randNum[i] - 1]);
     }
-    setMrList(randomPickStore);
+    setMrList(randomPickMenu);
   };
 
   const randomNum = (max) => {
